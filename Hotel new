@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hotel Evergreen and Party Palace</title>
+
+  <style>
+    /* CSS STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    header {
+      position: relative;
+      height: 60vh;
+      min-height: 350px;
+      overflow: hidden;
+      background: #145c36;
+    }
+
+    header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(55%);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      width: 90%;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+    }
+
+    /* Navigation */
+    nav {
+      background: #1f6f43;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #a3e0bf;
+    }
+
+    /* Main Sections */
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1f6f43;
+      font-size: 2rem;
+    }
+
+    .about {
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    /* Room Cards */
+    .rooms {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .room {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .room:hover {
+      transform: translateY(-5px);
+    }
+
+    .room img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .room-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .room h3 {
+      color: #1f6f43;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      background: #1f6f43;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #145c36;
+    }
+
+    .btn-secondary {
+      background: #4285F4;
+    }
+
+    .btn-secondary:hover {
+      background: #2b6cb0;
+    }
+
+    /* Forms & Containers */
+    .booking-form {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .booking-form label {
+      font-weight: bold;
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 5px;
+    }
+
+    .booking-form input,
+    .booking-form select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .booking-form button {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .payment {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .payment img {
+      width: 100%;
+      max-width: 220px;
+      margin: 15px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .contact {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .contact p {
+      margin: 8px 0;
+    }
+
+    .map-container {
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #1f6f43;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO SECTION -->
+  <header>
+    <img src="hotel-photo.png" alt="Hotel Evergreen and Party Palace">
+    <div class="hero-text">
+      <h1>Hotel Evergreen and Party Palace</h1>
+      <p>Comfortable Stay • Memorable Celebrations</p>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#booking">Booking</a>
+    <a href="#payment">Payment</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about">
+      <p>
+        Welcome to <strong>Hotel Evergreen and Party Palace</strong> located in Tamghas, Gulmi, Nepal[cite: 2]. We offer a peaceful stay with modern amenities and a space for parties, weddings, and events—perfect for families, couples, and celebrations[cite: 1, 2].
+      </p>
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section id="rooms">
+    <h2>Our Rooms</h2>
+    <div class="rooms">
+      <div class="room">
+        <img src="hotel-photo.png" alt="Deluxe AC Room">
+        <div class="room-content">
+          <h3>Room 1 – Deluxe AC Room</h3>
+          <p>Comfortable AC room with attached bathroom, TV, and Wi-Fi[cite: 1, 2].</p>
+          <button class="btn room-btn" data-room="Room 1 – Deluxe AC Room">Book Now</button>
+        </div>
+      </div>
+
+      <div class="room">
+        <img src="hotel-photo.png" alt="Deluxe AC Room">
+        <div class="room-content">
+          <h3>Room 2 – Deluxe AC Room</h3>
+          <p>Spacious room ideal for couples and small families[cite: 1, 2].</p>
+          <button class="btn room-btn" data-room="Room 2 – Deluxe AC Room">Book Now</button>
+        </div>
+      </div>
+
+      <div class="room">
+        <img src="hotel-photo.png" alt="Super Deluxe AC Room">
+        <div class="room-content">
+          <h3>Room 3 – Super Deluxe AC Room</h3>
+          <p>Premium room with extra space and comfort[cite: 1, 2].</p>
+          <button class="btn room-btn" data-room="Room 3 – Super Deluxe AC Room">Book Now</button>
+        </div>
+      </div>
+
+      <div class="room">
+        <img src="hotel-photo.png" alt="Family Non-AC Room">
+        <div class="room-content">
+          <h3>Room 4 – Family Non-AC Room</h3>
+          <p>Perfect for families with multiple beds and natural ventilation[cite: 1, 2].</p>
+          <button class="btn room-btn" data-room="Room 4 – Family Non-AC Room">Book Now</button>
+        </div>
+      </div>
+
+      <div class="room">
+        <img src="hotel-photo.png" alt="Standard Non-AC Room">
+        <div class="room-content">
+          <h3>Room 5 – Standard Non-AC Room</h3>
+          <p>Affordable and cozy stay with essential amenities[cite: 1, 2].</p>
+          <button class="btn room-btn" data-room="Room 5 – Standard Non-AC Room">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <h2>Booking Form</h2>
+    <div class="booking-form">
+      <form id="hotelBookingForm">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" placeholder="Enter your name" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+        <label for="checkIn">Check-In Date</label>
+        <input type="date" id="checkIn" required>
+
+        <label for="checkOut">Check-Out Date</label>
+        <input type="date" id="checkOut" required>
+
+        <label for="roomSelect">Select Room</label>
+        <select id="roomSelect" required>
+          <option value="Room 1 – Deluxe AC Room">Room 1 – Deluxe AC Room</option>
+          <option value="Room 2 – Deluxe AC Room">Room 2 – Deluxe AC Room</option>
+          <option value="Room 3 – Super Deluxe AC Room">Room 3 – Super Deluxe AC Room</option>
+          <option value="Room 4 – Family Non-AC Room">Room 4 – Family Non-AC Room</option>
+          <option value="Room 5 – Standard Non-AC Room">Room 5 – Standard Non-AC Room</option>
+        </select>
+
+        <button type="submit" class="btn">Submit Booking via WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- PAYMENT -->
+  <section id="payment">
+    <h2>QR Payment</h2>
+    <div class="payment">
+      <p>Pay advance amount using QR and send the payment screenshot on WhatsApp for confirmation[cite: 1, 2].</p>
+      <img src="qr.png" alt="QR Payment">
+      <p style="font-size:0.9rem; color:#555;">Supported: Esewa / Khalti / Bank QR[cite: 1, 2]</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact">
+      <p><strong>Address:</strong> Tamghas, Gulmi, Nepal[cite: 1, 2]</p>
+      <p><strong>Phone:</strong> +977-9857064004[cite: 1, 2]</p>
+      <p><strong>WhatsApp:</strong> +977-9857064004[cite: 1, 2]</p>
+      <p><strong>Email:</strong> info@hotelevergreen.com</p>
+
+      <div class="map-container">
+        <a href="https://maps.app.goo.gl/JwSVVgkrynjTBZrVA" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          📍 View Location on Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Hotel Evergreen and Party Palace. All Rights Reserved[cite: 1, 2].</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const roomBtns = document.querySelectorAll('.room-btn');
+      const roomSelect = document.getElementById('roomSelect');
+      const checkInInput = document.getElementById('checkIn');
+      const checkOutInput = document.getElementById('checkOut');
+      const bookingForm = document.getElementById('hotelBookingForm');
+
+      // Set minimum check-in date to today
+      const today = new Date().toISOString().split('T')[0];
+      checkInInput.min = today;
+
+      checkInInput.addEventListener('change', () => {
+        checkOutInput.min = checkInInput.value;
+      });
+
+      // "Book Now" buttons selection logic
+      roomBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const selectedRoom = e.target.getAttribute('data-room');
+          if (selectedRoom) {
+            roomSelect.value = selectedRoom;
+          }
+          document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // WhatsApp booking redirect on form submission
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('fullName').value;
+        const phone = document.getElementById('phone').value;
+        const checkIn = checkInInput.value;
+        const checkOut = checkOutInput.value;
+        const room = roomSelect.value;
+
+        const whatsappNumber = '9779857064004'; // Hotel contact number
+        const message = `Hello, I would like to make a reservation at Hotel Evergreen:\n\n` +
+                        `*Name:* ${name}\n` +
+                        `*Phone:* ${phone}\n` +
+                        `*Room:* ${room}\n` +
+                        `*Check-in:* ${checkIn}\n` +
+                        `*Check-out:* ${checkOut}`;
+
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+      });
+    });
+  </script>
+
+</body>
+</html>
