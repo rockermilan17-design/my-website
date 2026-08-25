@@ -335,6 +335,13 @@
         </select>
 
         <button type="submit" class="btn">Submit Booking via WhatsApp</button>
+        <a href="https://wa.me/9779857064004?text=Hello%20Hotel%20Evergreen%2C%20I%20would%20like%20to%20make%20a%20booking."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn"
+           style="margin-top:10px; background:#25D366;">
+          💬 Chat with us on WhatsApp
+        </a>
       </form>
     </div>
   </section>
@@ -401,16 +408,19 @@
         const checkOut = checkOutInput.value;
         const room = roomSelect.value;
 
-        const whatsappNumber = '+977-9857064004'; // Hotel contact number
-        const message = `Hello, I would like to make a reservation at Hotel Evergreen:\n\n` +
+        const whatsappNumber = '9779857064004'; // Hotel contact number
+        const message = `Hello Hotel Evergreen and Party Palace! 👋\n\n` +
+                        `I would like to make a room reservation.\n\n` +
                         `*Name:* ${name}\n` +
                         `*Phone:* ${phone}\n` +
                         `*Room:* ${room}\n` +
                         `*Check-in:* ${checkIn}\n` +
-                        `*Check-out:* ${checkOut}`;
+                        `*Check-out:* ${checkOut}\n\n` +
+                        `Please confirm availability and the total price. Thank you!` ;
 
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
+        alert('Your booking request has been prepared in WhatsApp. Please send the message to confirm your reservation.');
       });
     });
   </script>
